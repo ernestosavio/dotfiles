@@ -1,0 +1,9 @@
+# ignore everything
+/*
+/*/
+
+# But not these files
+!.bashrc
+!.gitignore
+!/.local/
+!/.config/

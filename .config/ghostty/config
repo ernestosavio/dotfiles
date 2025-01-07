@@ -1,0 +1,13 @@
+theme = GruvboxDark
+shell-integration = none
+gtk-titlebar = false
+quick-terminal-animation-duration = 0
+custom-shader-animation = false
+font-size = 14
+quit-after-last-window-closed = true
+wait-after-command = false
+confirm-close-surface = false
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+background-opacity = 0.96

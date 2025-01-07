@@ -1,0 +1,9 @@
+[Added Associations]
+application/pdf=firefox.desktop;
+text/plain=vim.desktop;
+text/x-csrc=vim.desktop;
+
+[Default Applications]
+text/x-csrc=vim.desktop
+text/plain=vim.desktop
+application/pdf=org.pwmt.zathura.desktop

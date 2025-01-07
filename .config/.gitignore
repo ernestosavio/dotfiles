@@ -1,0 +1,15 @@
+# Ignore 
+BraveSoftware/
+discord/
+dconf/
+Electron/
+github-copilot/
+go/
+gtk-3.0/
+mpv/
+libfm/
+htop/
+pcmanfm/
+pulse/
+spotify/
+
