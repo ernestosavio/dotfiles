@@ -1,0 +1,6 @@
+brave-bin
+networkmanager-dmenu-git
+spotify
+swaylock-effects-git
+yay
+yay-debug
