@@ -234,7 +234,7 @@ bar {
 # Personal Config
 
 # A 10-pixel border around every window.
-gaps inner 5
+gaps inner 3
 
 # Remove the title bar of each window
 default_border pixel 1
@@ -259,5 +259,13 @@ exec swayidle -w \
   timeout 300 'swaylock -f' \
   timeout 400 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
   timeout 600 'systemctl suspend' before-sleep 'swaylock -f'
+
+# Next an previu sound
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Abrir ghostty en el directorio que estoy
+bindsym $mod+n exec ~/.scripts/open_ghostty.sh
 
 include /etc/sway/config.d/*

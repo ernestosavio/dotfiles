@@ -1,0 +1,8 @@
+# Zathura configuration file
+# See man `man zathurarc'
+
+#stop at page boundries
+set scroll-page-aware "true"
+set smooth-scroll "true"
+set scroll-full-overlap 0.01
+set scroll-step 75
