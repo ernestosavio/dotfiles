@@ -233,11 +233,17 @@ bar {
 
 # Personal Config
 
+
 # A 10-pixel border around every window.
 gaps inner 3
 
 # Remove the title bar of each window
 default_border pixel 1
+#default_border none
+#default_floating_border none
+font pango:monospace 10
+titlebar_padding 1
+titlebar_border_thickness 1
 
 # Ejecutar gammastep (para ajustar la temperatura) (por alguna razon systemctl enable no anda)
 exec gammastep

@@ -1,6 +1,8 @@
 # Zathura configuration file
 # See man `man zathurarc'
 
+set selection-clipboard clipboard
+
 #stop at page boundries
 set scroll-page-aware "true"
 set smooth-scroll "true"
