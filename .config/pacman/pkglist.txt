@@ -59,6 +59,9 @@ waybar
 wget
 wl-clipboard
 wofi
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+xdg-desktop-portal-wlr
 xorg-xlsclients
 xorg-xwayland
 yazi
