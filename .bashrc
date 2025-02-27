@@ -22,4 +22,19 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# Alias para el git bare de .config
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
+
+# Highlight man
+export GROFF_NO_SGR=0
+export MANROFFOPT="-c"
+export LESS="--RAW-CONTROL-CHARS"
+export MANPAGER="less -R"
+# export MANPAGER="less -R --use-color -Dd+r -Du+b"
+
+export LESS_TERMCAP_md=$'\e[1;36m'  # Cian brillante para negrita
+export LESS_TERMCAP_me=$'\e[0m'     # Reset
+export LESS_TERMCAP_so=$'\e[1;33;44m'  # Fondo azul con texto amarillo para search highlight
+export LESS_TERMCAP_se=$'\e[0m'     # Reset
+export LESS_TERMCAP_us=$'\e[1;32m'  # Verde brillante para subrayado
+export LESS_TERMCAP_ue=$'\e[0m'     # Reset

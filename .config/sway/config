@@ -250,7 +250,9 @@ exec gammastep
 
 # Screenshot
     bindsym Print exec grim ~/Pictures/$(date +'%s.png')
-    bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/$(date +'%s.png')
+    bindsym Ctrl+Shift+Print exec grim -g "$(slurp)" ~/Pictures/$(date +'%s.png')
+    bindsym Shift+Print exec grim -g "$(slurp)" - | wl-copy
+
 
 # Cambiar direccion del touchpad
 input "type:touchpad" {
@@ -262,9 +264,9 @@ input "type:touchpad" {
 
 # Swayidle
 exec swayidle -w \
-  timeout 300 'swaylock -f' \
-  timeout 400 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-  timeout 600 'systemctl suspend' before-sleep 'swaylock -f'
+  timeout 600 'swaylock -f' \
+  timeout 700 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+  timeout 900 'systemctl suspend' before-sleep 'swaylock -f'
 
 # Next an previu sound
 bindsym XF86AudioPlay exec playerctl play-pause
