@@ -2,6 +2,7 @@
 application/pdf=firefox.desktop;
 text/plain=vim.desktop;
 text/x-csrc=vim.desktop;
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=brave-browser.desktop;
 
 [Default Applications]
 text/x-csrc=vim.desktop

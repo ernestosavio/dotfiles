@@ -38,3 +38,5 @@ export LESS_TERMCAP_so=$'\e[1;33;44m'  # Fondo azul con texto amarillo para sear
 export LESS_TERMCAP_se=$'\e[0m'     # Reset
 export LESS_TERMCAP_us=$'\e[1;32m'  # Verde brillante para subrayado
 export LESS_TERMCAP_ue=$'\e[0m'     # Reset
+
+[ -f "/home/ernesto/.ghcup/env" ] && . "/home/ernesto/.ghcup/env" # ghcup-env
