@@ -24,4 +24,8 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
+-- Centra la pantalla cuando hago c-d o c-u
+vim.keymap.set("n", '<c-d>', '<c-d>zz')
+vim.keymap.set("n", '<c-u>', '<c-u>zz')
+
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

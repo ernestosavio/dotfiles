@@ -1,0 +1,6 @@
+[default]
+path = "/home/ernesto/Pictures/wallpapers"
+duration = "45m"
+mode = "stretch"
+sorting = "random"
+transition-time = 500

@@ -1,4 +1,3 @@
-theme = GruvboxDark
 shell-integration = none
 gtk-titlebar = false
 quick-terminal-animation-duration = 0

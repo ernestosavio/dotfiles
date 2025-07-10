@@ -13,5 +13,8 @@ return {
 	vim.keymap.set('n', '<leader>ps', function()
 		builtin.grep_string({ search = vim.fn.input("Grep > ") });
 	end)
-    end
+  vim.keymap.set('n', '<leader>bf', function()
+    builtin.buffers({'[b]uffer fuzzy find'});
+    end)
+  end
 }
