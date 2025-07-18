@@ -1,0 +1,18 @@
+theme = /home/ernesto/.config/ghostty/themes/ashen
+shell-integration = none
+gtk-titlebar = false
+quick-terminal-animation-duration = 0
+custom-shader-animation = false
+# font-size = 14
+quit-after-last-window-closed = true
+wait-after-command = false
+confirm-close-surface = false
+font-feature = -calt
+# font-feature = -liga
+# font-feature = -dlig
+background-opacity = 0.96
+# adjust-cell-width="4.5%"
+
+font-family = "Monaspace Neon"
+font-size = 14.0
+font-style = "Wide Medium"

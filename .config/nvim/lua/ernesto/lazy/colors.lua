@@ -44,56 +44,58 @@ return {
     --   end
     -- },
 
-    {
-      "gbprod/nord.nvim",
-      lazy = false,
-      priority = 1000,
-      config = function()
-        require("nord").setup({
-          -- transparent = true,
-          terminal_colors = true,
-          styles = {
-            comments = {italic = false},
-            -- functions = {bold = true},
-          },
-        })
-        -- vim.cmd.colorscheme("nord")
-
-        ColorMyPencils("nord")
-        vim.cmd 'highlight Normal guibg=#2D303C'
-      end,
-    },
-
     -- {
-    --   "ficcdaf/ashen.nvim",
-    --   -- optional but recommended,
-    --   -- pin to the latest stable release:
-    --   tag = "*",
+    --   "gbprod/nord.nvim",
     --   lazy = false,
     --   priority = 1000,
-    --   -- configuration is optional!
     --   config = function()
-    --     require("ashen").setup({
-    --       style_presets = {
-    --         bold_functions = true, -- enable bold text
+    --     require("nord").setup({
+    --       -- transparent = true,
+    --       terminal_colors = true,
+    --       styles = {
+    --         comments = {italic = false},
+    --         -- functions = {bold = true},
+    --         keywords = {bold = true},
     --       },
-    --       colors = {
-    --         -- background = "#df3f3f", -- set background color
-    --       },
-    --       -- hl = {
-    --       --   merge_override = {
-    --       --     LineNr      = { fg = "#d4be98" },         -- números normales
-    --       --     CursorLineNr = { fg = "#ffcc00", bold = true },  -- número en la línea actual
-    --       --     LineNrAbove  = { fg = "#a0a0a0" },        -- relativo arriba
-    --       --     LineNrBelow  = { fg = "#a0a0a0" },        -- relativo abajo
-    --       --   },
-    --       -- },
     --     })
+    --     -- vim.cmd.colorscheme("nord")
 
-    --     ColorMyPencils("ashen")
-    --     -- vim.api.nvim_set_hl(0, 'LineNr', { fg = '#d4be98' })
+    --     ColorMyPencils("nord")
+    --     vim.cmd 'highlight Normal guibg=#2D303C'
     --   end,
     -- },
+
+    {
+      "ficcdaf/ashen.nvim",
+      -- optional but recommended,
+      -- pin to the latest stable release:
+      tag = "*",
+      lazy = false,
+      priority = 1000,
+      -- configuration is optional!
+      config = function()
+        require("ashen").setup({
+          style_presets = {
+            -- bold_functions = true, -- enable bold text
+            bold_keywords = true, -- enable bold keywords
+          },
+          colors = {
+            background = "#1a1a1a", -- set background color
+          },
+          -- hl = {
+          --   merge_override = {
+          --     LineNr      = { fg = "#d4be98" },         -- números normales
+          --     CursorLineNr = { fg = "#ffcc00", bold = true },  -- número en la línea actual
+          --     LineNrAbove  = { fg = "#a0a0a0" },        -- relativo arriba
+          --     LineNrBelow  = { fg = "#a0a0a0" },        -- relativo abajo
+          --   },
+          -- },
+        })
+
+        ColorMyPencils("ashen")
+        vim.api.nvim_set_hl(0, 'LineNr', { fg = '#d4be98' })
+      end,
+    },
 
     -- {
     --   'everviolet/nvim', name = 'evergarden',
