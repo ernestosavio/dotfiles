@@ -128,9 +128,9 @@ keymap = [
 	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Goto ~/.config" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Goto ~/Downloads" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Jump interactively" },
-	{ on = [ "g", "m" ],       run = "cd ~/Desktop/SistemasOperativosI/tp/",   desc = "Goto Memcached" },
 	{ on = [ "g", "s" ],       run = "cd ~/Desktop/SO2",   desc = "Goto SO2" },
 	{ on = [ "g", "e" ],       run = "cd ~/Desktop/EDyA2_2025",   desc = "Goto Estructuras" },
+	{ on = [ "g", "p" ],       run = "cd ~/personal",   desc = "Personal" },
 
 	# Tabs
 	{ on = "t", run = "tab_create --current", desc = "Create a new tab with CWD" },
