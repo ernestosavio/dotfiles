@@ -16,5 +16,8 @@ return {
   vim.keymap.set('n', '<leader>bf', function()
     builtin.buffers({'[b]uffer fuzzy find'});
     end)
+  vim.keymap.set('n', '<leader>h', function()
+    builtin.help_tags({'[h]elp [f]ind'});
+    end)
   end
 }

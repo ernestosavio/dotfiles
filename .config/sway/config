@@ -18,6 +18,9 @@ set $term ghostty
 # Your preferred application launcher
 set $menu wofi --show=drun --lines=5 --prompt=""
 
+# Start on workspace 1
+exec --no-startup-id swaymsg workspace 1
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -278,5 +281,6 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Abrir ghostty en el directorio que estoy
 bindsym $mod+n exec ~/.scripts/open_ghostty.sh
+
 
 include /etc/sway/config.d/*

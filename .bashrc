@@ -40,3 +40,8 @@ export LESS_TERMCAP_us=$'\e[1;32m'  # Verde brillante para subrayado
 export LESS_TERMCAP_ue=$'\e[0m'     # Reset
 
 [ -f "/home/ernesto/.ghcup/env" ] && . "/home/ernesto/.ghcup/env" # ghcup-env
+
+# Java necesita que las apps esten encerradas por un marco y algunos twm
+# no los ponen y hace que la aplicacion se quede en blanco, poniento esto
+# anda bien
+export _JAVA_AWT_WM_NONREPARENTING=1

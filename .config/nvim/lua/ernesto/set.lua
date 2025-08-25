@@ -31,4 +31,6 @@ vim.opt.colorcolumn = "80"
 -- Hace que no se me comenten los #ifdef sin importar si esta o no definido
 vim.api.nvim_set_hl(0, '@lsp.type.comment.cpp', {})
 
+-- vim.opt.winborder = "rounded"
+
 vim.g.mapleader = " "
