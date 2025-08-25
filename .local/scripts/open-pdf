@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+DIRS=(
+    "$HOME/Downloads"
+    "$HOME/Desktop"
+    "$HOME/personal"
+    "$HOME/personal/notes"
+    "$HOME/personal/projects"
+    "$(tmux run "echo #{pane_start_path}")"
+)
+
+selected=$(find ${DIRS[@]} -mindepth 1 -path "$HOME/Desktop/Facu\ \(Local\)" -prune -o -name "*.pdf" | sed "s|^$HOME/||" | fzf)
+
+if [[ -n "$selected" ]]; then
+  selected="$HOME/$selected"
+fi
+
+if [[ -z "$selected" ]]; then
+  exit 1
+fi
+
+selected_name=$(basename "$selected" | tr ".,: " "____")
+
+# nohup zathura "$selected" >/dev/null 2>&1 &
+# setsid zathura "$selected" >/dev/null 2>&1 &
+tmux new-window -dn pdf "zathura \"$selected\""
+
+exit 0
