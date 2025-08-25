@@ -3,4 +3,4 @@
 
 # But not these files
 !share/
-!scripts
+!scripts/
