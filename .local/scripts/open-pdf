@@ -9,7 +9,7 @@ DIRS=(
     "$(tmux run "echo #{pane_start_path}")"
 )
 
-selected=$(find ${DIRS[@]} -mindepth 1 -path "$HOME/Desktop/Facu\ \(Local\)" -prune -o -name "*.pdf" | sed "s|^$HOME/||" | fzf)
+selected=$(find -L ${DIRS[@]} -mindepth 1 -path "$HOME/Desktop/Facu\ \(Local\)" -prune -o -name "*.pdf" | sed "s|^$HOME/||" | fzf)
 
 if [[ -n "$selected" ]]; then
   selected="$HOME/$selected"
