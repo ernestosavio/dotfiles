@@ -3,3 +3,8 @@ networkmanager-dmenu-git
 spotify
 swaylock-effects-git
 yay
+brave-bin
+networkmanager-dmenu-git
+spotify
+swaylock-effects-git
+yay

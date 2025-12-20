@@ -7,7 +7,7 @@ quit-after-last-window-closed = true
 wait-after-command = false
 confirm-close-surface = false
 background-opacity = 0.96
-font-size = 14
+font-size = 15
 
 # JetBrain Mono
 font-family = "JetBrains Mono NL"
@@ -24,7 +24,7 @@ adjust-cell-width="3.5%"
 # MonaspaceNeon Variable
 #font-family = "Monaspace Neon Var"
 
-# Habilitar características OpenType para texture healing y ligaduras
+# Habilitar características OpenType para texture healing y ligaduras                     
 #font-feature = +calt
 #font-feature = +liga
 #font-feature = +dlig

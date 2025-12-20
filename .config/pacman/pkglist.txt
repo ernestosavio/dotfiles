@@ -35,6 +35,8 @@ luarocks
 man-db
 man-pages
 mpv
+mysql-workbench
+ncdu
 nemo
 nemo-fileroller
 neovim
@@ -65,6 +67,7 @@ swayimg
 tmux
 ttf-dejavu
 ttf-liberation
+typst
 valgrind
 vi
 vim
