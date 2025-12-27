@@ -1,0 +1,62 @@
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defalias
+  ;; --- ACTIVADORES ---
+  ;; Bajamos a 160ms para que responda mas rapido
+  nav (tap-hold 160 160 spc (layer-toggle navnum))
+  sys_l (tap-hold 160 160 lalt (layer-toggle symbols))
+  sys_r (tap-hold 160 160 ralt (layer-toggle symbols))
+
+  ;; --- MODIFICADORES ---
+  ;; Caps Lock puede ser rapido (100ms esta bien)
+  escctrl (tap-hold 100 100 esc lctl)
+  
+  ;; --- HOME ROW MODS (VELOCIDAD PURA) ---
+  ;; Usamos 'tap-hold-release' en lugar de 'tap-hold' basico.
+  ;; Tiempo bajado a 160ms. Si te salen letras cuando quieres Shift, subelo a 180.
+  
+  a_met (tap-hold-release 160 160 a lmet)
+  s_alt (tap-hold-release 160 160 s lalt)
+  d_ctl (tap-hold-release 160 160 d lctl)
+  f_sft (tap-hold-release 160 160 f lsft)
+
+  j_sft (tap-hold-release 160 160 j rsft)
+  k_ctl (tap-hold-release 160 160 k rctl)
+  l_alt (tap-hold-release 160 160 l ralt)
+  ;_met (tap-hold-release 160 160 ; rmet)
+)
+
+;; CAPA BASE
+(deflayer base
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    q    w    e    r    t    y    u    i    o    p    _    _    _
+  @escctrl @a_met @s_alt @d_ctl @f_sft g    h    @j_sft @k_ctl @l_alt @;_met '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet @sys_l         @nav          @sys_r rmet rctl
+)
+
+;; CAPA NAV-NUM (Espacio sostenido)
+;; Izq: Numpad | Der: Navegación Vim (HJKL)
+(deflayer navnum
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    esc  7    8    9    _    _    home end  bspc del  _    _    _
+  _    0    4    5    6    _    lft  down up   rght ret  _    _
+  _    .    1    2    3    _    pgdn pgup _    _    _    _
+  _    _    _              _              _    _    _
+)
+
+;; CAPA SYMBOLS (Alt sostenido)
+;; Izq: Vim Motions (^ $ % _) y Math | Der: Brackets y Lógica
+(deflayer symbols
+  _    _     _     _     _     _    _    _     _     _      _     _    _    _
+  _    S-2   S-3   -     S-=   _    _    [     ]     S-'    '     _    _    _
+  _    S-6   S-4   S-5   S--   _    _    S-[   S-9   S-0    S-]   S-;   _
+  _    \     S-\   =     S-8   _    S-,  S-.   S-/   S-1    _     _
+  _    _     _                 _               _     _      _
+)

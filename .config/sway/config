@@ -3,11 +3,15 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
+input "type:keyboard" {
+    xkb_options caps:super
+}
 
 ### Variables
+
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod1
+set $mod Mod4
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -58,7 +62,7 @@ output eDP-1 resolution 1920x1080 position 1920,0
 #       natural_scroll enabled
 #       middle_emulation enabled
 #   }
-#
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 

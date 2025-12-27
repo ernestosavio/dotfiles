@@ -1,0 +1,46 @@
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defalias
+  ;; --- TRIGGERS ---
+  nav (tap-hold 160 160 spc (layer-toggle navnum))
+  sym_l (tap-hold 200 200 lalt (layer-toggle symbols))
+  sym_r (tap-hold 200 200 ralt (layer-toggle symbols))
+
+  ;; Caps Lock (Ctrl/Esc)
+  ;;escctrl (tap-hold 100 100 esc lctl)
+)
+
+;; CAPA BASE
+(deflayer base
+  grv       1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab       q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps      a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl      lmet @sym_l         @nav          @sym_r rmet rctl
+)
+
+;; CAPA NAV-NUM (Espacio sostenido)
+;; Fila QWERTY -> Numeros 1-0
+;; Fila ASDF   -> Izquierda: BORRAR | Derecha: FLECHAS
+(deflayer navnum
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    esc  1    2    3    4    5    6    7    8    9    _    _    _
+  _    _    0    del  bspc .    lft  down up   rght ret  _    _
+  _    _    _    _    _    ,    home pgdn pgup end  _    _
+  _    _    _              _              _    _    _
+)
+
+;; CAPA SYMBOLS (Alt sostenido)
+(deflayer symbols
+  _    _     _     _     _     _     _    _     _     _      _     _    _    _
+  _    S-2   S-3   -     S-=   S-grv _    [     ]     S-7    S-8   _    _    _
+  _    S-6   S-4   S-5   =     S-'   '    S-[   S-9   S-0    S-]   S-;  _
+  _    \     S-\   S--   grv   _     S-,  S-.   S-/   S-1    _     _
+  _    _     _                 _                _     _      _
+)
