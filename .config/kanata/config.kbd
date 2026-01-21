@@ -103,8 +103,8 @@
 
 ;; CAPA SWAY NAV (LAlt one-shot)
 (deflayer sway_nav
-  A-`        A-1  A-2   A-3  A-4  A-5  A-6  A-7  A-8  A-9  _    _    _  _
-  A-`        A-1  A-2   A-3  A-4  A-5  A-6  A-7  A-8  A-9  A--  _    _    _
+  A-grv      A-1  A-2   A-3  A-4  A-5  A-6  A-7  A-8  A-9  _    _    _  _
+  A-grv      A-1  A-2   A-3  A-4  A-5  A-6  A-7  A-8  A-9  A--  _    _    _
   _          _    _     A-d  _    _    A-h  A-j  A-k  A-l  A-;  _    A-ret
   _          _    A-S-q _    _    _    _    _    _    _    _    _
   _          _    _                    A-spc               _    _    _
@@ -121,7 +121,7 @@
 
 ;; CAPA SYMBOLS
 (deflayer symbols
-  _     A-1    A-2  A-3  A-4  A-5   A-6 A-7   A-8    A-9    A-0   _    _    A-bspc
+  _     A-1    A-2  A-3  A-4  A-5   A-6 A-7   A-8    A-9    A-0   _    _    _
   _     S-2    S-3  -    S-=  S-grv _   [     ]      S-8    S-7   _    _    _
   _     S-6    S-4  S-5  =    S-'   '   S-[   S-9    S-0    S-]   S-;  _
   _     \      S-\  S--  grv  _     S-, S-.   S-/    S-1    _     _
