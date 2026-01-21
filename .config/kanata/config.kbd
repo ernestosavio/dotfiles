@@ -1,46 +1,129 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
 (defsrc
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
+  grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps  a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft  z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl  lmet lalt           spc            ralt rmet rctl
 )
 
 (defalias
-  ;; --- TRIGGERS ---
-  nav (tap-hold 160 160 spc (layer-toggle navnum))
-  sym_l (tap-hold 200 200 lalt (layer-toggle symbols))
-  sym_r (tap-hold 200 200 ralt (layer-toggle symbols))
+  ;; --- MACROS TMUX (La magia del One-Shot) ---
 
-  ;; Caps Lock (Ctrl/Esc)
-  ;;escctrl (tap-hold 100 100 esc lctl)
+  ;; --- ALIAS NUMERICOS (Correccion del Error) ---
+  ;; Necesarios para usarlos dentro de macros, si no Kanata piensa que son delays.
+  n1 1
+  n2 2
+  n3 3
+  n4 4
+  n5 5
+  n6 6
+  n7 7
+  n8 8
+  n9 9
+  n0 0
+
+  ;; Estas macros envian "Ctrl+b" seguido de la tecla de comando.
+  t_c  (macro C-b c)    ;; New Window
+  t_x  (macro C-b x)    ;; Kill Pane
+  t_z  (macro C-b z)    ;; Zoom
+  t_d  (macro C-b d)    ;; Detach
+  t_n  (macro C-b n)    ;; Next Window
+  t_p  (macro C-b p)    ;; Prev Window
+  t_w  (macro C-b w)    ;; Tree/List Windows
+  t_[  (macro C-b [)    ;; Copy Mode
+  t_]  (macro C-b ])    ;; Paste
+  t_;  (macro C-b ;)    
+  t_l  (macro C-b l)    
+  t_f  (macro C-b f)    
+  t_O  (macro C-b S-o)    
+  t_H  (macro C-b S-h)    
+  t_D  (macro C-b S-d)    
+  t_P  (macro C-b S-p)    
+  t_N  (macro C-b S-n)
+  
+  ;; Splits inteligentes (V = Vertical, S = Split/Horizontal)
+  t_v  (macro C-b S-5)  ;; Envia % (Split lado a lado)
+  t_s  (macro C-b S-')  ;; Envia " (Split arriba abajo)
+
+  ;; Navegacion entre paneles (HJKL)
+  t_h  (macro C-b left)
+  t_j  (macro C-b down)
+  t_k  (macro C-b up)
+  ;; t_l  (macro C-b right)
+
+  ;; Numeros (Ir a ventana Tmux 1, 2, 3...)
+  t_1  (macro C-b @n1)
+  t_2  (macro C-b @n2)
+  t_3  (macro C-b @n3)
+  t_4  (macro C-b @n4)
+  t_5  (macro C-b @n5)
+  t_6  (macro C-b @n6)
+  t_7  (macro C-b @n7)
+  t_8  (macro C-b @n8)
+  t_9  (macro C-b @n9)
+  t_0  (macro C-b @n0)
+
+  ;; --- TRIGGERS PULGARES (One-Shot Layers) ---
+  
+  ;; Left Alt: Sway One-Shot
+  swy_l (tap-hold-press 200 200 (one-shot 1500 (layer-toggle sway_nav)) (layer-toggle symbols))
+
+  ;; Right Alt: Tmux One-Shot (NUEVO)
+  ;; Tap -> Activa capa Tmux por un toque.
+  ;; Hold -> Capa Simbolos.
+  tmx_r (tap-hold-press 200 200 (one-shot 1500 (layer-toggle tmux_layer)) (layer-toggle symbols))
+
+  ;; --- LETRAS Y NAV ---
+  alt_c (tap-hold-release 160 160 c lalt)
+  alt_m (tap-hold-release 160 160 m ralt)
+  nav   (tap-hold-release 100 100 spc (layer-toggle navnum))
 )
 
 ;; CAPA BASE
 (deflayer base
-  grv       1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab       q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps      a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl      lmet @sym_l         @nav          @sym_r rmet rctl
+  grv        1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab        q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps       a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft       z    x    @alt_c    v    b    n    @alt_m    ,    .    /    rsft
+  lctl       lmet @swy_l             @nav       @tmx_r   rmet rctl
 )
 
-;; CAPA NAV-NUM (Espacio sostenido)
-;; Fila QWERTY -> Numeros 1-0
-;; Fila ASDF   -> Izquierda: BORRAR | Derecha: FLECHAS
+;; CAPA TMUX (RAlt one-shot)
+(deflayer tmux_layer
+  _          @t_1 @t_2 @t_3 @t_4 @t_5 @t_6 @t_7 @t_8 @t_9 @t_0 _    _    _
+  @t_w       @t_1 @t_2 @t_3 @t_4 @t_5 @t_6 @t_7 @t_8 @t_9 @t_0 @t_[ @t_] _
+  _          _    @t_s @t_d @t_f _    @t_h @t_j @t_k @t_l @t_;    _    _
+  _          @t_z @t_x @t_c @t_v _    @t_n _    _    _    _    _
+  _          _    _                   _                   _    _    _
+)
+
+;; CAPA SWAY NAV (LAlt one-shot)
+(deflayer sway_nav
+  A-`        A-1  A-2   A-3  A-4  A-5  A-6  A-7  A-8  A-9  _    _    _  _
+  A-`        A-1  A-2   A-3  A-4  A-5  A-6  A-7  A-8  A-9  A--  _    _    _
+  _          _    _     A-d  _    _    A-h  A-j  A-k  A-l  A-;  _    A-ret
+  _          _    A-S-q _    _    _    _    _    _    _    _    _
+  _          _    _                    A-spc               _    _    _
+)
+
+;; CAPA NAV-NUM
 (deflayer navnum
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    esc  1    2    3    4    5    6    7    8    9    _    _    _
-  _    _    0    del  bspc .    lft  down up   rght ret  _    _
-  _    _    _    _    _    ,    home pgdn pgup end  _    _
-  _    _    _              _              _    _    _
+  _     esc  _    _    _    _    _    _    _    _    _    _    _    _
+  _     1    2    3    4    5    6    7    8    9    0    _    _    _
+  _     0    esc  del  bspc .    lft  down up   rght ret  _    _
+  _     _    _    _    _    ,    home pgdn pgup end  _    _
+  _     _    _                   _                   _    _    _
 )
 
-;; CAPA SYMBOLS (Alt sostenido)
+;; CAPA SYMBOLS
 (deflayer symbols
-  _    _     _     _     _     _     _    _     _     _      _     _    _    _
-  _    S-2   S-3   -     S-=   S-grv _    [     ]     S-7    S-8   _    _    _
-  _    S-6   S-4   S-5   =     S-'   '    S-[   S-9   S-0    S-]   S-;  _
-  _    \     S-\   S--   grv   _     S-,  S-.   S-/   S-1    _     _
-  _    _     _                 _                _     _      _
+  _     A-1    A-2  A-3  A-4  A-5   A-6 A-7   A-8    A-9    A-0   _    _    A-bspc
+  _     S-2    S-3  -    S-=  S-grv _   [     ]      S-8    S-7   _    _    _
+  _     S-6    S-4  S-5  =    S-'   '   S-[   S-9    S-0    S-]   S-;  _
+  _     \      S-\  S--  grv  _     S-, S-.   S-/    S-1    _     _
+  _     _      _                   _                   _      _     _
 )

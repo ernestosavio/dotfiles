@@ -1,0 +1,55 @@
+(defsrc
+  grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps  a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft  z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl  lmet lalt           spc            ralt rmet rctl
+)
+
+(defalias
+  ;; --- CAPAS EN PULGARES (Puros) ---
+  ;; Los Alt físicos ahora activan la capa Symbols.
+  ;; Como son "toggles" puros, responden instantáneamente.
+  lay_l (layer-toggle symbols)
+  lay_r (layer-toggle symbols)
+
+  ;; --- ALT EN LETRAS (C y M) ---
+  ;; Usamos tap-hold-release para que no te moleste al escribir.
+  ;; C actúa como Left Alt (para usar con mano derecha)
+  ;; M actúa como Right Alt (para usar con mano izquierda en atajos como Alt+1)
+  alt_c (tap-hold-release 160 160 c lalt)
+  alt_m (tap-hold-release 160 160 m ralt)
+
+  ;; --- NAV ---
+  nav (tap-hold-release 160 160 spc (layer-toggle navnum))
+)
+
+;; CAPA BASE
+(deflayer base
+  grv        1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab        q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps       a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft       z    x    @alt_c    v    b    n    @alt_m    ,    .    /    rsft
+  ;; Mapeamos los pulgares a las capas:
+  lctl       lmet @lay_l             @nav           @lay_r   rmet rctl
+)
+
+;; CAPA NAV-NUM
+(deflayer navnum
+  _     esc  _    _    _    _    _    _    _    _    _    _    _    _
+  _     1    2    3    4    5    6    7    8    9    0    _    _    _
+  _     0    esc  del  bspc .    lft  down up   rght ret  _    _
+  _     _    _    _    _    ,    home pgdn pgup end  _    _
+  _     _    _                   _                   _    _    _
+)
+
+
+
+;; CAPA SYMBOLS (Alt sostenido)
+(deflayer symbols
+  _    A-1    A-2  A-3   A-4   A-5   A-6  A-7   A-8   A-9    A-0   _    _    A-bspc
+  _    S-2   S-3   -     S-=   S-grv _    [     ]     S-8    S-7   _    _    _
+  _    S-6   S-4   S-5   =     S-'   '    S-[   S-9   S-0    S-]   S-;  _
+  _    \     S-\   S--   grv   _     S-,  S-.   S-/   S-1    _     _
+  _    _     _                 _                _     _      _
+)

@@ -22,7 +22,6 @@ ghostty
 git
 glfw
 grim
-grub
 gvfs
 gvfs-mtp
 htop

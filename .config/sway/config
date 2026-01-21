@@ -3,15 +3,15 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-input "type:keyboard" {
-    xkb_options caps:super
-}
+#input "type:keyboard" {
+#     xkb_options caps:super
+# }
 
 ### Variables
 
 #
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
+# Logo key. Use Mod1 for Alt. 4
+set $mod Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -285,6 +285,9 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Abrir ghostty en el directorio que estoy
 bindsym $mod+n exec ~/.scripts/open_ghostty.sh
+
+# Previous workspace
+# bindsym Mod1+Tab workspace back_and_forth
 
 
 include /etc/sway/config.d/*
