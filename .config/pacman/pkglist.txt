@@ -57,6 +57,7 @@ power-profiles-daemon
 pulseaudio
 qemu-full
 qt5-wayland
+resvg
 ripgrep
 slurp
 sway

@@ -67,6 +67,13 @@
   t_9  (macro C-b @n9)
   t_0  (macro C-b @n0)
 
+  ;; 1. CapsLock Híbrido (VIM MODE): Tap = Escape, Hold = CapsLock
+  caps_esc (tap-hold-press 160 160 esc caps)
+
+  ;; Ctrl mod
+  lctl_x (tap-hold-release 200 200 x lctl)
+  rctl_, (tap-hold-release 200 200 , rctl)
+
   ;; --- TRIGGERS PULGARES (One-Shot Layers) ---
   
   ;; Left Alt: Sway One-Shot
@@ -79,16 +86,16 @@
 
   ;; --- LETRAS Y NAV ---
   alt_c (tap-hold-release 160 160 c lalt)
-  alt_m (tap-hold-release 160 160 m ralt)
-  nav   (tap-hold-release 100 100 spc (layer-toggle navnum))
+  alt_m (tap-hold-release 200 200 m ralt)
+  nav   (tap-hold-release 120 120 spc (layer-toggle navnum))
 )
 
 ;; CAPA BASE
 (deflayer base
-  grv        1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab        q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps       a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft       z    x    @alt_c    v    b    n    @alt_m    ,    .    /    rsft
+  grv        1    2         3    4    5    6    7    8    9    0         -    =    bspc
+  tab        q    w         e    r    t    y    u    i    o    p         [    ]    \
+  @caps_esc  a    s         d    f    g    h    j    k    l    ;         '    ret
+  lsft       z    @lctl_x   @alt_c    v    b    n    @alt_m    @rctl_,   .    /    rsft
   lctl       lmet @swy_l             @nav       @tmx_r   rmet rctl
 )
 
@@ -105,7 +112,7 @@
 (deflayer sway_nav
   A-grv      A-1  A-2   A-3  A-4  A-5  A-6  A-7  A-8  A-9  _    _    _  _
   A-grv      A-1  A-2   A-3  A-4  A-5  A-6  A-7  A-8  A-9  A--  _    _    _
-  _          _    _     A-d  _    _    A-h  A-j  A-k  A-l  A-;  _    A-ret
+  _          _    _     A-d  A-f  _    A-h  A-j  A-k  A-l  A-;  _    A-ret
   _          _    A-S-q _    _    _    _    _    _    _    _    _
   _          _    _                    A-spc               _    _    _
 )
@@ -115,7 +122,7 @@
   _     esc  _    _    _    _    _    _    _    _    _    _    _    _
   _     1    2    3    4    5    6    7    8    9    0    _    _    _
   _     0    esc  del  bspc .    lft  down up   rght ret  _    _
-  _     _    _    _    _    ,    home pgdn pgup end  _    _
+  _     _    _    _    pgdn ,    pgup _    _    _    home end 
   _     _    _                   _                   _    _    _
 )
 
