@@ -65,37 +65,37 @@ return {
     --   end,
     -- },
 
-    {
-      "ficcdaf/ashen.nvim",
-      -- optional but recommended,
-      -- pin to the latest stable release:
-      tag = "*",
-      lazy = false,
-      priority = 1000,
-      -- configuration is optional!
-      config = function()
-        require("ashen").setup({
-          style_presets = {
-            -- bold_functions = true, -- enable bold text
-            bold_keywords = true, -- enable bold keywords
-          },
-          colors = {
-            background = "#1a1a1a", -- set background color
-          },
-          -- hl = {
-          --   merge_override = {
-          --     LineNr      = { fg = "#d4be98" },         -- números normales
-          --     CursorLineNr = { fg = "#ffcc00", bold = true },  -- número en la línea actual
-          --     LineNrAbove  = { fg = "#a0a0a0" },        -- relativo arriba
-          --     LineNrBelow  = { fg = "#a0a0a0" },        -- relativo abajo
-          --   },
-          -- },
-        })
+    -- {
+    --   "ficcdaf/ashen.nvim",
+    --   -- optional but recommended,
+    --   -- pin to the latest stable release:
+    --   tag = "*",
+    --   lazy = false,
+    --   priority = 1000,
+    --   -- configuration is optional!
+    --   config = function()
+    --     require("ashen").setup({
+    --       style_presets = {
+    --         -- bold_functions = true, -- enable bold text
+    --         bold_keywords = true, -- enable bold keywords
+    --       },
+    --       colors = {
+    --         background = "#1a1a1a", -- set background color
+    --       },
+    --       -- hl = {
+    --       --   merge_override = {
+    --       --     LineNr      = { fg = "#d4be98" },         -- números normales
+    --       --     CursorLineNr = { fg = "#ffcc00", bold = true },  -- número en la línea actual
+    --       --     LineNrAbove  = { fg = "#a0a0a0" },        -- relativo arriba
+    --       --     LineNrBelow  = { fg = "#a0a0a0" },        -- relativo abajo
+    --       --   },
+    --       -- },
+    --     })
 
-        ColorMyPencils("ashen")
-        vim.api.nvim_set_hl(0, 'LineNr', { fg = '#d4be98' })
-      end,
-    },
+    --     ColorMyPencils("ashen")
+    --     vim.api.nvim_set_hl(0, 'LineNr', { fg = '#d4be98' })
+    --   end,
+    -- },
 
     -- {
     --   'everviolet/nvim', name = 'evergarden',
@@ -154,5 +154,45 @@ return {
     --     end
     --},
   
+  {
+    "mcchrish/zenbones.nvim",
+    dependencies = { "rktjmp/lush.nvim" },
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.o.background = "dark" 
+      vim.cmd.colorscheme("zenbones")
+
+      local highlights = {
+        Normal       = { bg = "#2A2A2A", fg = "#D0D0D0" }, 
+        Comment      = { fg = "#7A7A7A", italic = true },  
+        String       = { fg = "#A8A8A8" },                 
+        Keyword      = { fg = "#CC5A7B", bold = true },    
+        Function     = { fg = "#C4788D" },                 
+        Identifier   = { fg = "#D0D0D0" },                 
+        Type         = { fg = "#CC5A7B", bold = true },    
+        Constant     = { fg = "#E3B1C0" },                 
+        Number       = { fg = "#E3B1C0" },                 
+        Statement    = { fg = "#CC5A7B" },                 
+        Operator     = { fg = "#999999" },                 
+        LineNr       = { fg = "#C4C4C4" },                 -- Gris claro mucho más iluminado
+        CursorLine   = { bg = "#333333" },                 
+        CursorLineNr = { fg = "#CC5A7B", bold = true },    -- Línea actual en rosa mate y negrita
+        Visual       = { bg = "#4A2E37" },                 
+      }
+
+      vim.api.nvim_create_autocmd('TextYankPost', {
+        group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
+        callback = function()
+          -- Cambia 'IncSearch' por 'Visual' o 'Search' para que resalte en Zenbones
+          vim.highlight.on_yank({ higroup = 'Visual' })
+        end,
+      })
+
+      for group, colors in pairs(highlights) do
+        vim.api.nvim_set_hl(0, group, colors)
+      end
+    end,
+  }
 
 }

@@ -85,7 +85,7 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 21,
         "spacing": 10
     },
 //    "clock": {
@@ -123,18 +123,16 @@
     },
     "battery": {
         "states": {
-            // "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": "⏚ {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
+        "format": "{icon}    {capacity}%",       // <-- Le agregamos un espacio extra acá
+        "format-charging": "⏚     {capacity}%",  // <-- Y acá
+        "format-plugged": "     {capacity}%",   // <-- Y acá
+        "format-alt": "{icon}    {time}",
         "format-icons": ["", "", "", "", ""]
     },
+
     "battery#bat2": {
         "bat": "BAT2"
     },
@@ -178,18 +176,16 @@
         "on-click": "pavucontrol",
         "on-click-right": "foot -a pw-top pw-top"
     },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
+
+  "custom/media": {
+        "format": "  {}",
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "return-type": "string",
+        "max-length": 40,
+        "exec": "playerctl -p spotify metadata --format '{{artist}} - {{title}}' --follow 2> /dev/null",
+        "on-click": "playerctl -p spotify play-pause"
     },
+
     "custom/power": {
       "format" : "⏻ ",
       "tooltip": false,

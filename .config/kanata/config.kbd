@@ -71,8 +71,8 @@
   caps_esc (tap-hold-press 160 160 esc caps)
 
   ;; Ctrl mod
-  lctl_x (tap-hold-release 200 200 x lctl)
-  rctl_, (tap-hold-release 200 200 , rctl)
+  lctl_c (tap-hold-release 200 200 c lctl)
+  rctl_m (tap-hold-release 200 200 m rctl)
 
   ;; --- TRIGGERS PULGARES (One-Shot Layers) ---
   
@@ -85,8 +85,8 @@
   tmx_r (tap-hold-press 200 200 (one-shot 1500 (layer-toggle tmux_layer)) (layer-toggle symbols))
 
   ;; --- LETRAS Y NAV ---
-  alt_c (tap-hold-release 160 160 c lalt)
-  alt_m (tap-hold-release 200 200 m ralt)
+  alt_x (tap-hold-release 160 160 x lalt)
+  alt_, (tap-hold-release 200 200 , ralt)
   nav   (tap-hold-release 120 120 spc (layer-toggle navnum))
 )
 
@@ -95,8 +95,8 @@
   grv        1    2         3    4    5    6    7    8    9    0         -    =    bspc
   tab        q    w         e    r    t    y    u    i    o    p         [    ]    \
   @caps_esc  a    s         d    f    g    h    j    k    l    ;         '    ret
-  lsft       z    @lctl_x   @alt_c    v    b    n    @alt_m    @rctl_,   .    /    rsft
-  lctl       lmet @swy_l             @nav       @tmx_r   rmet rctl
+  lsft       z    @alt_x    @lctl_c   v    b    n    @rctl_m    @alt_,   .    /    rsft
+  lctl       lmet @tmx_r             @nav       @swy_l   rmet rctl
 )
 
 ;; CAPA TMUX (RAlt one-shot)
@@ -122,15 +122,23 @@
   _     esc  _    _    _    _    _    _    _    _    _    _    _    _
   _     1    2    3    4    5    6    7    8    9    0    _    _    _
   _     0    esc  del  bspc .    lft  down up   rght ret  _    _
-  _     _    _    _    pgdn ,    pgup _    _    _    home end 
+  _     _    _    _    pgdn ,    pgup S-1  _    _    home end 
   _     _    _                   _                   _    _    _
 )
 
 ;; CAPA SYMBOLS
+;; Vieja
+;; (deflayer symbols
+;;   _     A-1    A-2  A-3  A-4  A-5   A-6 A-7   A-8    A-9    A-0   _    _    _
+;;   _     S-2    S-3  -    S-=  S-grv _   [     ]      S-8    S-7   _    _    _
+;;   _     S-6    S-4  S-5  =    S-'   '   S-[   S-9    S-0    S-]   S-;  _
+;;   _     \      S-\  S--  grv  _     S-, S-.   S-/    S-1    _     _
+;;   _     _      _                   _                   _      _     _
+;; )
 (deflayer symbols
-  _     A-1    A-2  A-3  A-4  A-5   A-6 A-7   A-8    A-9    A-0   _    _    _
-  _     S-2    S-3  -    S-=  S-grv _   [     ]      S-8    S-7   _    _    _
-  _     S-6    S-4  S-5  =    S-'   '   S-[   S-9    S-0    S-]   S-;  _
-  _     \      S-\  S--  grv  _     S-, S-.   S-/    S-1    _     _
+  _     A-1    A-2  A-3  A-4  A-5   A-6   A-7   A-8    A-9    A-0   _    _    _
+  _     S-2    S-3  -    S-=  S-5   _     S-7   S-8    S-4    S-6   S-1  _    _
+  _     S-'    [    S-9  =    S-[   S-]   S--   S-0    ]      '     _    _
+  _     S-\    _    S-,  grv  _     S-grv S-.   S-1    _      \     _    
   _     _      _                   _                   _      _     _
 )

@@ -29,3 +29,7 @@ vim.keymap.set("n", '<c-d>', '<c-d>zz')
 vim.keymap.set("n", '<c-u>', '<c-u>zz')
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Mejorar el tabuleo < / >
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")

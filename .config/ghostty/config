@@ -24,7 +24,7 @@ adjust-cell-width="3.5%"
 # MonaspaceNeon Variable
 #font-family = "Monaspace Neon Var"
 
-# Habilitar características OpenType para texture healing y ligaduras                     
+# Habilitar características OpenType para texture healing y ligaduras
 #font-feature = +calt
 #font-feature = +liga
 #font-feature = +dlig

@@ -37,7 +37,8 @@ return {
       ensure_installed = {
         "lua_ls",
         "vimls",
-        "clangd"
+        "clangd",
+        "pyright"
       },
       handlers = {
         function(server_name)
@@ -128,6 +129,17 @@ return {
       '<leader>de',
       '<cmd>Telescope diagnostics bufnr=0 theme=dropdown prompt_title=diagnostics previewer=false <CR>'
     )
+
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Ir a la definición (LSP)' })
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Ir a la declaración (LSP)' })
+    vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, { desc = 'Ir a la implementación (LSP)' })
+    
+    -- Usamos Telescope para ver las referencias porque es mil veces más visual
+    vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references, { desc = 'Ver referencias (Telescope)' })
+    
+    -- Superpoderes de refactorización
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Renombrar variable en todo el proyecto' })
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Ver acciones de código automáticas' })
 
   end
 }
