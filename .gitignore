@@ -11,3 +11,4 @@
 !/.scripts/
 !.ready-tmux
 !.vimrc
+!.systemd-enabled.txt

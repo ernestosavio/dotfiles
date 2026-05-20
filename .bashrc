@@ -74,5 +74,5 @@ parse_git_status() {
 # \W           -> Solo el nombre de la carpeta actual (ej: "nachos" en vez de "/home/.../nachos")
 # \[\033[00m\] -> Resetear color
 # \$           -> Muestra $ para usuario normal, # para root
-export PS1='\[\033[36m\]\w\[\033[00m\]$(parse_git_status) \$ '
+export PS1='\[\033[36m\]\w\[\033[00m\]$(parse_git_status)\n╰─ \$ '
                                          

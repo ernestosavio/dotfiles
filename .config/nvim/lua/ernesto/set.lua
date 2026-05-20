@@ -34,3 +34,6 @@ vim.api.nvim_set_hl(0, '@lsp.type.comment.cpp', {})
 -- vim.opt.winborder = "rounded"
 
 vim.g.mapleader = " "
+
+-- para marimo noteeboks
+vim.o.exrc = true

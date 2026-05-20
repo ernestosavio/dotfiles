@@ -1,0 +1,16 @@
+# <file system> <dir> <type> <options> <dump> <pass>
+
+# /dev/nvme0n1p7
+UUID=bb28aae9-487d-4381-adee-6e08fe7c30e8	/         	ext4      	rw,relatime	0 1
+
+# /dev/nvme0n1p1 LABEL=SYSTEM_DRV
+UUID=78EF-5121      	/efi      	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/nvme0n1p8
+UUID=2b0a6955-2e32-4ec1-bbb2-b48573f3867d	/home     	ext4      	rw,relatime	0 2
+
+# /dev/nvme0n1p5
+UUID=2F0B-A8F2      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/nvme0n1p6
+/swapfile none swap defaults 0 0

@@ -1,0 +1,25 @@
+##
+## Arch Linux repository mirrorlist
+## Filtered by mirror score from mirror status page
+## Generated on 2026-01-12
+##
+
+## Chile
+Server = https://mirror.anquan.cl/archlinux/$repo/os/$arch
+## Brazil
+Server = https://mirrors.ic.unicamp.br/archlinux/$repo/os/$arch
+## Brazil
+Server = https://mirror.ufscar.br/archlinux/$repo/os/$arch
+## Brazil
+Server = https://br.mirrors.cicku.me/archlinux/$repo/os/$arch
+## Brazil
+Server = https://archlinux.c3sl.ufpr.br/$repo/os/$arch
+## Chile
+Server = https://elmirror.cl/archlinux/$repo/os/$arch
+
+## Backup
+## Server = http://mirror.hnd.cl/archlinux/$repo/os/$arch
+## Server = https://br.mirrors.cicku.me/archlinux/$repo/os/$arch
+## Server = https://mirror.hnd.cl/archlinux/$repo/os/$arch
+## Server = http://br.mirrors.cicku.me/archlinux/$repo/os/$arch
+## Server = https://mirror.anquan.cl/archlinux/$repo/os/$arch

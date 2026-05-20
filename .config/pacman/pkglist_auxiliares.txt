@@ -248,3 +248,17 @@ sioyek-git
 spotify
 swaylock-effects-git
 yay
+brave-bin
+kanata-bin
+networkmanager-dmenu-git
+sioyek-git
+spotify
+swaylock-effects-git
+yay
+brave-bin
+kanata-bin
+networkmanager-dmenu-git
+sioyek-git
+spotify
+swaylock-effects-git
+yay

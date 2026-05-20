@@ -4,6 +4,7 @@ amd-ucode
 arch-install-scripts
 base
 base-devel
+bear
 brightnessctl
 discord
 docker

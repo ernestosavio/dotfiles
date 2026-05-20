@@ -1,0 +1,6 @@
+[Unit]
+Description=Actualiza la lista de unidades habilitadas de systemd
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/scripts/update-systemd-list.sh
