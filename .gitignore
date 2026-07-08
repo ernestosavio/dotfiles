@@ -12,3 +12,8 @@
 !.ready-tmux
 !.vimrc
 !.systemd-enabled.txt
+
+# Nueva configuracion para fedora + dcli + nix
+.config/dcli-config
+nix-config
+.dotfiles-backup
