@@ -16,7 +16,7 @@ sudo dnf copr enable theblackdon/dcli -y
 sudo dnf install -y dcli
 
 # 4. dcli-config: instala TODO lo de dnf + copia hooks para `udev rules` y `/etc`
-git clone git@github.com:ernestosavio/dcli-config.git ~/.config/dcli-config
+git clone git@github.com:ernestosavio/dcli-config.git ~/.config/dcli
 cd ~/.config/dcli-config
 dcli sync
 
