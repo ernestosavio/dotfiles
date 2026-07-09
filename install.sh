@@ -18,7 +18,7 @@ sudo dnf install -y dcli
 # 4. dcli-config: instala TODO lo de dnf + copia hooks para `udev rules` y `/etc`
 git clone git@github.com:ernestosavio/dcli-config.git ~/.config/dcli
 echo "host: main" > ~/.config/dcli/config.yaml # Replace "main" for the real host
-cd ~/.config/dcli-config
+cd ~/.config/dcli
 dcli sync
 
 # 5. nix-config: ex-AUR y privativos
