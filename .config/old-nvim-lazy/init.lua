@@ -1,6 +1,5 @@
-require("ernesto.set")
-require("ernesto.remap")
-require("ernesto.pack")
+require("ernesto.lazy_init")
+require("ernesto.init")
 
 -- CONFIG SYLVAN FRANK
 -- vim.cmd([[set mouse=]])
@@ -284,4 +283,3 @@ require("ernesto.pack")
 --})
 --vim.cmd('colorscheme ' .. default_color)
 ---- Custom statusbar highlight
-

@@ -21,10 +21,8 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
-vim.keymap.set("n", "<leader>k", "<cmd>cnext<CR>zz", { desc = "Próximo resultado (quickfix)" })
-vim.keymap.set("n", "<leader>j", "<cmd>cprev<CR>zz", { desc = "Resultado anterior (quickfix)" })
-vim.keymap.set("n", "<leader>qf", "<cmd>copen<CR>", { desc = "Abrir la quickfix list" })
-vim.keymap.set("n", "<leader>qc", "<cmd>cclose<CR>", { desc = "Cerrar la quickfix list" })
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Centra la pantalla cuando hago c-d o c-u
 vim.keymap.set("n", '<c-d>', '<c-d>zz')
