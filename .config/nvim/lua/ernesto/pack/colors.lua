@@ -55,7 +55,7 @@ local theme_configs = {
 
   ashen = function()
     vim.pack.add({
-      "https://github.com/sainnhe/everforest",
+      "https://github.com/ficd0/ashen.nvim",
     })
     require("ashen").setup({
       style_presets = { bold_keywords = true },

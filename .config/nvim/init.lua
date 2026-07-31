@@ -1,3 +1,5 @@
+require("ernesto.autocmd")
+require("ernesto.ui")
 require("ernesto.set")
 require("ernesto.remap")
 require("ernesto.pack")

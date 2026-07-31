@@ -28,7 +28,7 @@ require("gitsigns").setup({
     vim.keymap.set("n", "<leader>gp", gs.preview_hunk, opts("Previsualizar cambio de git"))
 
     -- Deshacer los cambios del hunk actual (volver a como estaba en git).
-    vim.keymap.set("n", "<leader>gr", gs.reset_hunk, opts("Descartar cambio de git"))
+    vim.keymap.set("n", "<leader>hr", gs.reset_hunk, opts("Descartar cambio de git"))
 
     -- Confirmar (stage) solo el hunk actual, no todo el archivo.
     vim.keymap.set("n", "<leader>gs", gs.stage_hunk, opts("Agregar cambio al stage"))

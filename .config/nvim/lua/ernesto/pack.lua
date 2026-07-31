@@ -15,6 +15,10 @@ require("ernesto.pack.harpoon")
 require("ernesto.pack.treesitter")
 require("ernesto.pack.telescope")
 require("ernesto.pack.lsp")
+
+require("ernesto.pack.code-actions")
+
+require("ernesto.pack.blink")
 require("ernesto.pack.typst-preview")
 
 -- Colors
@@ -28,3 +32,6 @@ require("ernesto.pack.oil")
 require("ernesto.pack.gitsigns")
 
 require("ernesto.pack.quicker")
+
+require("ernesto.pack.zdiff")
+require("ernesto.pack.git-conflict")

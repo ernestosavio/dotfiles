@@ -46,22 +46,33 @@ vim.lsp.config("lua_ls", {
 })
 
 require("mason-lspconfig").setup({
-  ensure_installed = {
-    "lua_ls", "vimls", "clangd", "pyright", "rust_analyzer",
-    "ts_ls", "tinymist", --"hls",
-  },
+  ensure_installed = { "lua_ls", "vimls", "clangd", "pyright" },
   -- automatic_enable = true (default): no hace falta llamar
   -- vim.lsp.enable() a mano, mason-lspconfig lo hace por cada
   -- server que instalaste vía `ensure_installed` (o :Mason).
 })
 
-
 -- ---------------------------------------------------------------
 -- Autocompletado nativo: reemplaza a nvim-cmp
 -- ---------------------------------------------------------------
--- El autocompletado ya no lo maneja Neovim nativo: lo prende blink.cmp
--- (ver pack/blink.lua). Por eso NO hay acá vim.o.autocomplete ni
--- completeopt — blink los configura por su cuenta.
+vim.o.autocomplete = true
+vim.opt.completeopt = { "menu", "menuone", "noselect", "popup" }
+-- Nota: <C-n>/<C-p> para moverse y <C-y>/<C-e> para confirmar/cancelar
+-- YA son los mapeos por defecto de Neovim para el menú de completado.
+-- Antes los definías vos mismo adentro de cmp.setup({ mapping = ... }).
+
+-- vim.o.autocomplete es GLOBAL: se prende en cualquier buffer en modo
+-- inserción, incluida la cajita de búsqueda de Telescope (que es un
+-- buffer normal, de filetype "TelescopePrompt"). Ahí no lo queremos,
+-- así que lo apagamos puntual para ese filetype con vim.bo (la versión
+-- "buffer-local" de vim.o: pisa el valor global solo en ese buffer).
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "TelescopePrompt",
+  callback = function()
+    vim.bo.autocomplete = false
+  end,
+  desc = "No mostrar autocompletado nativo dentro de Telescope",
+})
 
 -- ---------------------------------------------------------------
 -- LspAttach: UN SOLO autocomando central para todos los servers
@@ -76,9 +87,27 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if not client then return end
 
-    -- El completado y la firma de función ya los da blink.cmp
-    -- (fuente "lsp" + signature.enabled=true en pack/blink.lua).
-    -- Ya no hace falta vim.lsp.completion.enable() acá.
+    if client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, client.id, args.buf, {
+        autotrigger = true,
+        -- convert: te deja decidir qué mostrar por cada columna del
+        -- menú nativo, ítem por ítem. Sin esto, solo se ve la palabra.
+        -- Acá le agregamos:
+        --   kind -> "Function", "Field", "Variable"... (lo que el LSP
+        --           mande como tipo de símbolo)
+        --   menu -> el "detail" del LSP: en una función, su firma
+        --           completa (los mismos paréntesis con los tipos de
+        --           argumento que veías en tu nvim-cmp viejo)
+        convert = function(item)
+          local kind = vim.lsp.protocol.CompletionItemKind[item.kind] or ""
+          return {
+            abbr = item.label,
+            kind = kind,
+            menu = item.detail or "",
+          }
+        end,
+      })
+    end
 
     -- vim.tbl_extend("force", t1, t2): junta dos tablas en una nueva.
     -- "force" dice qué hacer si una clave se repite en las dos: gana
@@ -95,9 +124,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, opts("Ir a la implementación"))
     vim.keymap.set("n", "<leader>gr", require("telescope.builtin").lsp_references, opts("Ver referencias"))
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts("Renombrar en todo el proyecto"))
-    --vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts("Acciones de código"))
-    vim.keymap.set("n", "<leader>ca", require("actions-preview").code_actions, opts("Acciones de código (con preview)"))
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts("Acciones de código"))
     vim.keymap.set("n", "<leader>=", vim.lsp.buf.format, opts("Formatear buffer"))
+    -- Signature help: mientras escribís los argumentos de una llamada,
+    -- muestra qué parámetros espera la función, en un float chiquito.
+    -- Va en modo INSERT porque es justo cuando estás tipeando adentro
+    -- de los paréntesis que sirve.
+    if client:supports_method("textDocument/signatureHelp") then
+      vim.keymap.set("i", "<C-Tab>", vim.lsp.buf.signature_help, opts("Ver firma de la función"))
+    end
 
     -- Symbols: document = todo lo definido en ESTE archivo (para saltar
     -- directo a una función sin scrollear). Workspace = lo mismo pero
@@ -133,9 +168,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- El salto entre placeholders de un snippet ya lo maneja blink.cmp
--- (con <Tab>/<S-Tab> en su preset "default"), así que sacamos el
--- mapeo manual de vim.snippet que habíamos armado antes.
+-- ---------------------------------------------------------------
+-- Saltar entre placeholders de un snippet LSP (reemplaza a LuaSnip
+-- para el caso de uso que ya tenías: expandir snippets que manda
+-- el propio language server). Neovim ya trae esto nativo desde 0.10.
+-- ---------------------------------------------------------------
+vim.keymap.set({ "i", "s" }, "<C-j>", function()
+  if vim.snippet.active({ direction = 1 }) then
+    return vim.snippet.jump(1)
+  end
+end, { desc = "Siguiente placeholder del snippet" })
+
+vim.keymap.set({ "i", "s" }, "<C-k>", function()
+  if vim.snippet.active({ direction = -1 }) then
+    return vim.snippet.jump(-1)
+  end
+end, { desc = "Placeholder anterior del snippet" })
 
 -- Saltar al próximo/anterior diagnostic (error, warning, etc) SIN
 -- necesidad de abrir ningún listado. Es global (no depende de qué

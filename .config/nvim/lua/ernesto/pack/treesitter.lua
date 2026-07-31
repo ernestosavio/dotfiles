@@ -8,7 +8,7 @@ require("nvim-treesitter").setup({})
 
 require("nvim-treesitter").install({
   "javascript", "typescript", "python", "c", "lua",
-  "vim", "vimdoc", "query", "haskell", "markdown", "typst",
+  "vim", "vimdoc", "query", "haskell", "markdown", "typst", "rust"
 })
 
 -- "PackChanged" cada vez que instala, actualiza o borra un plugin.
