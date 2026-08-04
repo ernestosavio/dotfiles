@@ -1,5 +1,5 @@
 /* =========================================================
-   Tema Waybar: Vainilla Cálido (Más ajustado y oscuro)
+   Tema Waybar: gray-vanilla (mismos hex que ghostty/nvim/tmux)
    ========================================================= */
 
 * {
@@ -12,12 +12,12 @@
 
 /* Fondo principal de la barra */
 window#waybar {
-    background-color: #1a1918;
-    color: #e8e3d3;
+    background-color: #1c1b1a;
+    color: #ddd3ba;
 }
 
 /* =========================================================
-   Contenedores de los Módulos (Cajas más juntas)
+   Contenedores de los Módulos
    ========================================================= */
 #workspaces,
 #mode,
@@ -36,50 +36,50 @@ window#waybar {
 #clock,
 #tray,
 #custom-power {
-    background-color: #2a2826;
-    color: #e8e3d3;
-    padding: 2px 10px; /* Un poco menos de relleno lateral */
-    margin: 5px 2px;   /* ACÁ ACHICAMOS: menos espacio entre cada bloque */
+    background-color: #242322;
+    color: #ddd3ba;
+    padding: 2px 10px;
+    margin: 5px 2px;
     border-radius: 8px;
 }
 
 #window {
     background-color: transparent;
-    color: #b5b0a1;
+    color: #b3ac9d;
     margin: 5px 0px;
 }
 
 /* =========================================================
-   Espacios de Trabajo (Números bien pegaditos)
+   Espacios de Trabajo
    ========================================================= */
 #workspaces {
     padding: 0 2px;
 }
 
 #workspaces button {
-    color: #b5b0a1;
+    color: #b3ac9d;
     padding: 0 6px;
-    margin: 2px 1px; /* ACÁ ACHICAMOS: separación casi nula entre los números */
+    margin: 2px 1px;
     border-radius: 4px;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #workspaces button:hover {
-    background-color: #3b3835;
-    color: #e8e3d3;
+    background-color: #322f2b;
+    color: #ece4cd;
 }
 
-/* Workspace Activo (Amarillo ocre/tostado) */
+/* Workspace Activo (vainilla) */
 #workspaces button.focused,
 #workspaces button.active {
-    background-color: #b89d50; /* Amarillo más oscuro y elegante */
-    color: #1a1918;
+    background-color: #e6bd5f;
+    color: #1c1b1a;
     font-weight: bold;
 }
 
 #workspaces button.urgent {
-    background-color: #cc7878;
-    color: #1a1918;
+    background-color: #cf6b5c;
+    color: #1c1b1a;
 }
 
 /* =========================================================
@@ -87,32 +87,32 @@ window#waybar {
    ========================================================= */
 
 #battery.warning {
-    color: #b89d50; /* Tono amarillo oscuro */
+    color: #e6bd5f;
 }
 
 #battery.critical {
-    color: #cc7878;
+    color: #cf6b5c;
     font-weight: bold;
 }
 
 #mpd.playing {
-    color: #b89d50; /* Tono amarillo oscuro */
+    color: #e6bd5f;
 }
 
 #mpd.stopped {
-    color: #7a776e;
+    color: #8a8272;
     background-color: transparent;
 }
 
 #custom-power {
-    color: #cc7878;
+    color: #cf6b5c;
     background-color: transparent;
     font-size: 16px;
 }
 
 #custom-power:hover {
-    background-color: #cc7878;
-    color: #1a1918;
+    background-color: #cf6b5c;
+    color: #1c1b1a;
 }
 
 #clock {

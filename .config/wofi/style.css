@@ -1,10 +1,10 @@
-/* Tema oscuro minimalista para Wofi */
+/* Tema gray-vanilla para Wofi */
 
 window {
   margin: 8px;
   border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.90);
-  border: none;
+  background-color: rgba(28, 27, 26, 0.94); /* #1c1b1a */
+  border: 1px solid #403c37;
 }
 
 #outer-box, #inner-box {
@@ -16,8 +16,8 @@ window {
 #input {
   margin: 4px;
   padding: 4px;
-  background-color: rgba(30, 30, 30, 0.95);
-  color: #e0e0e0;
+  background-color: #242322;
+  color: #ece4cd;
   border: none;
   font-size: 17px;
 }
@@ -35,15 +35,15 @@ window {
 }
 
 #entry:selected {
-  background-color: #444444;
-  color: #ffffff;
+  background-color: #322f2b;
+  color: #f5efd9;
 }
 
 #text {
-  color: #c0c0c0;
+  color: #b3ac9d;
   margin: 4px 0;
 }
 
 #entry:selected #text {
-  color: #ffffff;
+  color: #e6bd5f;
 }

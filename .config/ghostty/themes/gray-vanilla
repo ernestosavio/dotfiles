@@ -1,0 +1,30 @@
+# gray-vanilla
+# Tema gris + vainilla, tonos cálidos oscuros.
+# Esta paleta es la fuente de verdad: los mismos hex se repiten en
+# nvim (colors.lua), waybar (style.css), tmux (tmux.conf) y wofi (style.css).
+
+background = #1c1b1a
+foreground = #ddd3ba
+
+cursor-color = #e6bd5f
+cursor-text  = #1c1b1a
+
+selection-background = #322f2b
+selection-foreground = #f5efd9
+
+palette = 0=#1c1b1a
+palette = 1=#cf6b5c
+palette = 2=#a8b06a
+palette = 3=#e6bd5f
+palette = 4=#7ea3b0
+palette = 5=#b589a8
+palette = 6=#7bb0a4
+palette = 7=#d4c9a0
+palette = 8=#5c584c
+palette = 9=#e0806b
+palette = 10=#c3cb82
+palette = 11=#f2d688
+palette = 12=#94bdc8
+palette = 13=#cfa2c8
+palette = 14=#8fc9ba
+palette = 15=#f5efd9

@@ -1,7 +1,7 @@
 -- ==============================================================================
 -- Selector de Tema (Cambiá este string para cambiar de tema)
 -- ==============================================================================
-local active_theme = "zenbones"
+local active_theme = "grayvanilla"
 
 vim.o.background = "dark"
 vim.o.termguicolors = true
@@ -138,6 +138,85 @@ local theme_configs = {
       vim.api.nvim_set_hl(0, group, colors)
     end
 
+  end,
+
+  -- ============================================================================
+  -- gray-vanilla: mismos hex que ghostty/themes/gray-vanilla, waybar y tmux.
+  -- Reusa zenbones.nvim como base (ya estaba instalado) y pisa los highlights.
+  -- ============================================================================
+  grayvanilla = function()
+    vim.pack.add({
+      "https://github.com/rktjmp/lush.nvim",
+      "https://github.com/zenbones-theme/zenbones.nvim",
+    })
+    vim.cmd.colorscheme("zenbones")
+
+    local c = {
+      bg0 = "#1c1b1a", -- fondo
+      bg1 = "#242322", -- paneles / statusline
+      bg2 = "#322f2b", -- selección / cursorline
+      bg3 = "#403c37", -- bordes / separadores
+
+      fg0 = "#ece4cd", -- texto principal
+      fg1 = "#ddd3ba", -- texto (foreground base, igual que ghostty)
+      fg2 = "#8a8272", -- comentarios / muted
+      fg3 = "#635e52", -- line numbers
+
+      vanilla     = "#e6bd5f", -- acento principal: keywords, cursor, títulos
+      vanilla_dim = "#cfa562", -- strings, tipos
+      grey_accent = "#b3ac9d", -- funciones, operadores
+
+      red    = "#cf6b5c",
+      green  = "#a8b06a",
+      blue   = "#7ea3b0",
+    }
+
+    local hl = {
+      Normal        = { bg = c.bg0, fg = c.fg1 },
+      NormalFloat   = { bg = c.bg1, fg = c.fg1 },
+      FloatBorder   = { bg = c.bg1, fg = c.bg3 },
+      WinSeparator  = { fg = c.bg3, bg = c.bg0 },
+      SignColumn    = { bg = c.bg0 },
+
+      Comment       = { fg = c.fg2, italic = true },
+      String        = { fg = c.vanilla_dim },
+      Keyword       = { fg = c.vanilla, bold = true },
+      Statement     = { fg = c.vanilla },
+      Function      = { fg = c.grey_accent, bold = true },
+      Identifier    = { fg = c.fg1 },
+      Type          = { fg = c.vanilla_dim, bold = true },
+      Constant      = { fg = c.vanilla },
+      Number        = { fg = c.vanilla },
+      Operator      = { fg = c.grey_accent },
+      Special       = { fg = c.vanilla_dim },
+
+      LineNr        = { fg = c.fg3 },
+      CursorLineNr  = { fg = c.vanilla, bold = true },
+      CursorLine    = { bg = c.bg2 },
+      Visual        = { bg = c.bg2 },
+      Search        = { bg = c.vanilla, fg = c.bg0 },
+      IncSearch     = { bg = c.vanilla_dim, fg = c.bg0 },
+
+      Pmenu         = { bg = c.bg1, fg = c.fg1 },
+      PmenuSel      = { bg = c.bg2, fg = c.vanilla, bold = true },
+      PmenuBorder   = { bg = c.bg1, fg = c.bg3 },
+
+      StatusLine    = { bg = c.bg1, fg = c.fg1 },
+      StatusLineNC  = { bg = c.bg1, fg = c.fg2 },
+
+      DiagnosticError = { fg = c.red },
+      DiagnosticWarn  = { fg = c.vanilla },
+      DiagnosticInfo  = { fg = c.blue },
+      DiagnosticHint  = { fg = c.grey_accent },
+
+      GitSignsAdd    = { fg = c.green },
+      GitSignsChange = { fg = c.vanilla },
+      GitSignsDelete = { fg = c.red },
+    }
+
+    for group, colors in pairs(hl) do
+      vim.api.nvim_set_hl(0, group, colors)
+    end
   end,
 
   zenbones2 = function()
