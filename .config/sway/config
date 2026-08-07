@@ -286,8 +286,12 @@ bindsym XF86AudioPrev exec playerctl previous
 # Abrir ghostty en el directorio que estoy
 bindsym $mod+n exec ~/.scripts/open_ghostty.sh
 
+# Selector de temas (gray-vanilla / gray-vanilla-soft / coral-gray)
+bindsym $mod+Shift+t exec ~/.local/scripts/theme-switch
+
 # Previous workspace
 # bindsym Mod1+Tab workspace back_and_forth
 
 
 include /etc/sway/config.d/*
+

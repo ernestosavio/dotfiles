@@ -1,7 +1,21 @@
 -- ==============================================================================
--- Selector de Tema (Cambiá este string para cambiar de tema)
+-- Selector de Tema
+-- Lee el último tema elegido con :Theme <nombre> (o por el script theme-switch).
+-- Si no hay nada guardado, usa "gray-vanilla" por default.
 -- ==============================================================================
-local active_theme = "grayvanilla"
+local state_file = vim.fn.stdpath("config") .. "/theme.txt"
+
+local function read_active_theme()
+  local f = io.open(state_file, "r")
+  if f then
+    local name = f:read("*l")
+    f:close()
+    if name and name ~= "" then return name end
+  end
+  return "gray-vanilla"
+end
+
+local active_theme = read_active_theme()
 
 vim.o.background = "dark"
 vim.o.termguicolors = true
@@ -144,7 +158,7 @@ local theme_configs = {
   -- gray-vanilla: mismos hex que ghostty/themes/gray-vanilla, waybar y tmux.
   -- Reusa zenbones.nvim como base (ya estaba instalado) y pisa los highlights.
   -- ============================================================================
-  grayvanilla = function()
+  ["gray-vanilla"] = function()
     vim.pack.add({
       "https://github.com/rktjmp/lush.nvim",
       "https://github.com/zenbones-theme/zenbones.nvim",
@@ -193,6 +207,8 @@ local theme_configs = {
       LineNr        = { fg = c.fg3 },
       CursorLineNr  = { fg = c.vanilla, bold = true },
       CursorLine    = { bg = c.bg2 },
+      Cursor        = { bg = "#e0699e", fg = c.bg0 },
+      lCursor       = { bg = "#e0699e", fg = c.bg0 },
       Visual        = { bg = c.bg2 },
       Search        = { bg = c.vanilla, fg = c.bg0 },
       IncSearch     = { bg = c.vanilla_dim, fg = c.bg0 },
@@ -215,6 +231,122 @@ local theme_configs = {
     }
 
     for group, colors in pairs(hl) do
+      vim.api.nvim_set_hl(0, group, colors)
+    end
+  end,
+
+  -- ============================================================================
+  -- gray-vanilla-soft: misma base que gray-vanilla, menos contraste e intensidad.
+  -- ============================================================================
+  ["gray-vanilla-soft"] = function()
+    vim.pack.add({
+      "https://github.com/rktjmp/lush.nvim",
+      "https://github.com/zenbones-theme/zenbones.nvim",
+    })
+    vim.cmd.colorscheme("zenbones")
+
+    local c = {
+      bg0 = "#1c1b1a",
+      bg1 = "#242322",
+      bg2 = "#322f2b",
+      bg3 = "#403c37",
+
+      fg0 = "#ded7c5",
+      fg1 = "#cdc5b3",
+      fg2 = "#7d786e",
+      fg3 = "#5c584e",
+
+      vanilla     = "#cbbb95",
+      vanilla_dim = "#b8a888",
+      grey_accent = "#a29c92",
+
+      red    = "#b57972",
+      green  = "#9da585",
+      blue   = "#93a3aa",
+    }
+
+    local hl = {
+      Normal        = { bg = c.bg0, fg = c.fg1 },
+      NormalFloat   = { bg = c.bg1, fg = c.fg1 },
+      FloatBorder   = { bg = c.bg1, fg = c.bg3 },
+      WinSeparator  = { fg = c.bg3, bg = c.bg0 },
+      SignColumn    = { bg = c.bg0 },
+
+      Comment       = { fg = c.fg2, italic = true },
+      String        = { fg = c.vanilla_dim },
+      Keyword       = { fg = c.vanilla, bold = true },
+      Statement     = { fg = c.vanilla },
+      Function      = { fg = c.grey_accent, bold = true },
+      Identifier    = { fg = c.fg1 },
+      Type          = { fg = c.vanilla_dim, bold = true },
+      Constant      = { fg = c.vanilla },
+      Number        = { fg = c.vanilla },
+      Operator      = { fg = c.grey_accent },
+      Special       = { fg = c.vanilla_dim },
+
+      LineNr        = { fg = c.fg3 },
+      CursorLineNr  = { fg = c.vanilla, bold = true },
+      CursorLine    = { bg = c.bg2 },
+      Cursor        = { bg = "#e0699e", fg = c.bg0 },
+      lCursor       = { bg = "#e0699e", fg = c.bg0 },
+      Visual        = { bg = c.bg2 },
+      Search        = { bg = c.vanilla, fg = c.bg0 },
+      IncSearch     = { bg = c.vanilla_dim, fg = c.bg0 },
+
+      Pmenu         = { bg = c.bg1, fg = c.fg1 },
+      PmenuSel      = { bg = c.bg2, fg = c.vanilla, bold = true },
+      PmenuBorder   = { bg = c.bg1, fg = c.bg3 },
+
+      StatusLine    = { bg = c.bg1, fg = c.fg1 },
+      StatusLineNC  = { bg = c.bg1, fg = c.fg2 },
+
+      DiagnosticError = { fg = c.red },
+      DiagnosticWarn  = { fg = c.vanilla },
+      DiagnosticInfo  = { fg = c.blue },
+      DiagnosticHint  = { fg = c.grey_accent },
+
+      GitSignsAdd    = { fg = c.green },
+      GitSignsChange = { fg = c.vanilla },
+      GitSignsDelete = { fg = c.red },
+    }
+
+    for group, colors in pairs(hl) do
+      vim.api.nvim_set_hl(0, group, colors)
+    end
+  end,
+
+  -- ============================================================================
+  -- coral-gray: tu zenbones personalizado (gris + rosa coral), con cursor rosa
+  -- sumado. Mismos hex que ghostty/waybar/tmux/swaylock del tema "coral-gray".
+  -- ============================================================================
+  ["coral-gray"] = function()
+    vim.pack.add({
+      "https://github.com/rktjmp/lush.nvim",
+      "https://github.com/zenbones-theme/zenbones.nvim",
+    })
+    vim.cmd.colorscheme("zenbones")
+
+    local custom_highlights = {
+      Normal       = { bg = "#2A2A2A", fg = "#D0D0D0" },
+      Comment      = { fg = "#7A7A7A", italic = true },
+      String       = { fg = "#A8A8A8" },
+      Keyword      = { fg = "#CC5A7B", bold = true },
+      Function     = { fg = "#C4788D" },
+      Identifier   = { fg = "#D0D0D0" },
+      Type         = { fg = "#CC5A7B", bold = true },
+      Constant     = { fg = "#E3B1C0" },
+      Number       = { fg = "#E3B1C0" },
+      Statement    = { fg = "#CC5A7B" },
+      Operator     = { fg = "#999999" },
+      LineNr       = { fg = "#C4C4C4" },
+      CursorLine   = { bg = "#333333" },
+      CursorLineNr = { fg = "#CC5A7B", bold = true },
+      Cursor       = { bg = "#e0699e", fg = "#2A2A2A" },
+      lCursor      = { bg = "#e0699e", fg = "#2A2A2A" },
+      Visual       = { bg = "#4A2E37" },
+    }
+
+    for group, colors in pairs(custom_highlights) do
       vim.api.nvim_set_hl(0, group, colors)
     end
   end,
@@ -253,3 +385,33 @@ if theme_configs[active_theme] then
 else
   print("El tema '" .. active_theme .. "' no está definido en la configuración.")
 end
+
+-- ==============================================================================
+-- :Theme <nombre>  -> cambia el tema en la sesión actual y lo guarda para
+-- la próxima vez que abras nvim. El script theme-switch escribe el mismo
+-- archivo, así que ambos caminos quedan sincronizados.
+-- ==============================================================================
+vim.api.nvim_create_user_command("Theme", function(opts)
+  local name = opts.args
+  if not theme_configs[name] then
+    vim.notify("Tema no definido: " .. name, vim.log.levels.ERROR)
+    return
+  end
+  local ok, err = pcall(theme_configs[name])
+  if not ok then
+    vim.notify("Error al cargar '" .. name .. "': " .. tostring(err), vim.log.levels.ERROR)
+    return
+  end
+  active_theme = name
+  local f = io.open(state_file, "w")
+  if f then
+    f:write(name)
+    f:close()
+  end
+  vim.notify("Tema: " .. name)
+end, {
+  nargs = 1,
+  complete = function()
+    return { "gray-vanilla", "gray-vanilla-soft", "coral-gray" }
+  end,
+})

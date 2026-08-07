@@ -1,6 +1,6 @@
-/* =========================================================
-   Tema Waybar: gray-vanilla (mismos hex que ghostty/nvim/tmux)
-   ========================================================= */
+/* Estructura de Waybar. Los colores viven en colors.css (symlink por tema,
+   lo maneja theme-switch). No hardcodear hex acá. */
+@import "colors.css";
 
 * {
     font-family: "JetBrainsMono Nerd Font", "Roboto", "Font Awesome 6 Free", sans-serif;
@@ -10,15 +10,11 @@
     box-shadow: none;
 }
 
-/* Fondo principal de la barra */
 window#waybar {
-    background-color: #1c1b1a;
-    color: #ddd3ba;
+    background-color: @bg0;
+    color: @fg1;
 }
 
-/* =========================================================
-   Contenedores de los Módulos
-   ========================================================= */
 #workspaces,
 #mode,
 #scratchpad,
@@ -36,8 +32,8 @@ window#waybar {
 #clock,
 #tray,
 #custom-power {
-    background-color: #242322;
-    color: #ddd3ba;
+    background-color: @bg1;
+    color: @fg1;
     padding: 2px 10px;
     margin: 5px 2px;
     border-radius: 8px;
@@ -45,19 +41,16 @@ window#waybar {
 
 #window {
     background-color: transparent;
-    color: #b3ac9d;
+    color: @accent2;
     margin: 5px 0px;
 }
 
-/* =========================================================
-   Espacios de Trabajo
-   ========================================================= */
 #workspaces {
     padding: 0 2px;
 }
 
 #workspaces button {
-    color: #b3ac9d;
+    color: @accent2;
     padding: 0 6px;
     margin: 2px 1px;
     border-radius: 4px;
@@ -65,54 +58,49 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background-color: #322f2b;
-    color: #ece4cd;
+    background-color: @bg2;
+    color: @fg0;
 }
 
-/* Workspace Activo (vainilla) */
 #workspaces button.focused,
 #workspaces button.active {
-    background-color: #e6bd5f;
-    color: #1c1b1a;
+    background-color: @accent;
+    color: @bg0;
     font-weight: bold;
 }
 
 #workspaces button.urgent {
-    background-color: #cf6b5c;
-    color: #1c1b1a;
+    background-color: @red;
+    color: @bg0;
 }
 
-/* =========================================================
-   Estados Específicos
-   ========================================================= */
-
 #battery.warning {
-    color: #e6bd5f;
+    color: @accent;
 }
 
 #battery.critical {
-    color: #cf6b5c;
+    color: @red;
     font-weight: bold;
 }
 
 #mpd.playing {
-    color: #e6bd5f;
+    color: @accent;
 }
 
 #mpd.stopped {
-    color: #8a8272;
+    color: @fg2;
     background-color: transparent;
 }
 
 #custom-power {
-    color: #cf6b5c;
+    color: @red;
     background-color: transparent;
     font-size: 16px;
 }
 
 #custom-power:hover {
-    background-color: #cf6b5c;
-    color: #1c1b1a;
+    background-color: @red;
+    color: @bg0;
 }
 
 #clock {

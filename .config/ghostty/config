@@ -1,5 +1,5 @@
 # theme = pers
-theme = /home/ernesto/.config/ghostty/themes/gray-vanilla
+config-file = /home/ernesto/.config/ghostty/current-theme.conf
 shell-integration = bash
 shell-integration-features = no-cursor,sudo,title
 gtk-titlebar = false
@@ -10,23 +10,8 @@ confirm-close-surface = false
 background-opacity = 0.96
 font-size = 15
 
-
-# ------------------------------------------
-# En prueba
-# cursor-style-blink = false
-
-# Shell integration está activado por defecto en Ghostty (detect)
-# default = none
-#shell-integration = detect
-#shell-integration-features = no-cursor
-# shell-integration = bash
-# shell-integration-features = cursor,sudo,title
-
-# ------------------------------------------
-
 # Cursor con efecto (trail estilo Neovide). Clonar antes:
 #   git clone https://github.com/sahaj-b/ghostty-cursor-shaders ~/.config/ghostty/shaders
-#cursor-style = bar
 custom-shader = shaders/cursor_warp.glsl
 custom-shader-animation = true
 
