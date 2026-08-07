@@ -42,8 +42,8 @@ pkill -SIGUSR2 ghostty 2>/dev/null || true
 ln -sf "themes/$name.css" "$CFG/waybar/colors.css"
 pkill -SIGUSR2 waybar 2>/dev/null || true
 
-# Wofi: repuntar colors.css (se aplica en la próxima apertura, no hay proceso persistente que recargar).
-ln -sf "themes/$name.css" "$CFG/wofi/colors.css"
+# Wofi: repuntar style.css directo (archivo autocontenido por tema, sin @import).
+ln -sf "themes/$name.css" "$CFG/wofi/style.css"
 
 # Tmux: repuntar el archivo incluido y recargar la config en el server activo.
 ln -sf "themes/$name.conf" "$CFG/tmux/current-theme.conf"

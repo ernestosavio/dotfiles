@@ -1,6 +1,47 @@
-@define-color bg0 #1c1b1a;
-@define-color bg1 #242322;
-@define-color bg2 #322f2b;
-@define-color fg0 #ded7c5;
-@define-color fg2 #7d786e;
-@define-color accent #cbbb95;
+window {
+  margin: 8px;
+  border-radius: 8px;
+  background-color: rgba(28, 27, 26, 0.94);
+  border: 1px solid #322f2b;
+}
+
+#outer-box, #inner-box {
+  margin: 4px;
+  padding: 0;
+  background: transparent;
+}
+
+#input {
+  margin: 4px;
+  padding: 4px;
+  background-color: #242322;
+  color: #ded7c5;
+  border: none;
+  font-size: 17px;
+}
+
+#scroll {
+  margin: 0;
+  border: none;
+}
+
+#entry {
+  margin: 0 4px;
+  padding: 4px 4px;
+  border-radius: 4px;
+  font-size: 17px;
+}
+
+#entry:selected {
+  background-color: #322f2b;
+  color: #ded7c5;
+}
+
+#text {
+  color: #7d786e;
+  margin: 4px 0;
+}
+
+#entry:selected #text {
+  color: #cbbb95;
+}
