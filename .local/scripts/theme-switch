@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# theme-switch: cambia el tema en ghostty, waybar, wofi, tmux y swaylock a la vez.
+# El prompt de bash (PS1/LS_COLORS) queda fuera a propósito, no se toca.
+#
+# Uso:
+#   theme-switch                 -> abre un picker con wofi
+#   theme-switch gray-vanilla    -> aplica ese tema directo
+#   theme-switch --list          -> lista los temas disponibles
+
+set -euo pipefail
+
+CFG="$HOME/.config"
+THEMES=(gray-vanilla gray-vanilla-soft coral-gray)
+
+if [ "${1:-}" = "--list" ]; then
+  printf '%s\n' "${THEMES[@]}"
+  exit 0
+fi
+
+name="${1:-}"
+
+if [ -z "$name" ]; then
+  name=$(printf '%s\n' "${THEMES[@]}" | wofi --dmenu --prompt "Tema:" 2>/dev/null || true)
+  [ -z "$name" ] && exit 0
+fi
+
+is_valid=false
+for t in "${THEMES[@]}"; do
+  [ "$t" = "$name" ] && is_valid=true
+done
+if [ "$is_valid" = false ]; then
+  echo "Tema desconocido: $name" >&2
+  echo "Opciones: ${THEMES[*]}" >&2
+  exit 1
+fi
+
+# Ghostty: repuntar el symlink que la config incluye vía config-file.
+ln -sf "themes/$name" "$CFG/ghostty/current-theme.conf"
+pkill -SIGUSR2 ghostty 2>/dev/null || true
+
+# Waybar: repuntar colors.css e indicarle que recargue.
+ln -sf "themes/$name.css" "$CFG/waybar/colors.css"
+pkill -SIGUSR2 waybar 2>/dev/null || true
+
+# Wofi: repuntar colors.css (se aplica en la próxima apertura, no hay proceso persistente que recargar).
+ln -sf "themes/$name.css" "$CFG/wofi/colors.css"
+
+# Tmux: repuntar el archivo incluido y recargar la config en el server activo.
+ln -sf "themes/$name.conf" "$CFG/tmux/current-theme.conf"
+tmux source-file "$CFG/tmux/tmux.conf" 2>/dev/null || true
+
+# Swaylock: repuntar el config completo (no soporta includes, no hace falta recargar nada).
+ln -sf "themes/$name.conf" "$CFG/swaylock/config"
+
+# Nvim: guardar el tema elegido para que la próxima sesión lo levante solo.
+# Para la sesión ya abierta, corré :Theme <nombre> adentro de nvim.
+echo "$name" > "$CFG/nvim/theme.txt"
+
+echo "Tema activo: $name"
