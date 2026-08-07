@@ -1,0 +1,27 @@
+# coral-gray: basado en tu zenbones personalizado de nvim (gris + rosa coral).
+
+background = #2A2A2A
+foreground = #D0D0D0
+
+cursor-color = #e0699e
+cursor-text  = #2A2A2A
+
+selection-background = #4A2E37
+selection-foreground = #E8E8E8
+
+palette = 0=#2A2A2A
+palette = 1=#CC5A7B
+palette = 2=#9AA482
+palette = 3=#D8C08F
+palette = 4=#8FA3AC
+palette = 5=#C4788D
+palette = 6=#93ADA8
+palette = 7=#C4C4C4
+palette = 8=#555555
+palette = 9=#E3899F
+palette = 10=#B0BA98
+palette = 11=#D8C08F
+palette = 12=#A8BCC4
+palette = 13=#E3B1C0
+palette = 14=#A8C4BD
+palette = 15=#E8E8E8
