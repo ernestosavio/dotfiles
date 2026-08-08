@@ -37,3 +37,15 @@ vim.g.mapleader = " "
 
 -- para marimo noteeboks
 --vim.o.exrc = true
+
+-- set.lua (agregar al final)
+
+-- Providers que no usamos. Node/Perl/Python3 son solo para "remote
+-- plugins" (plugins viejos escritos en esos lenguajes) — ninguno de
+-- tus plugins actuales depende de esto. Apagarlos saca el warning del
+-- checkhealth y ahorra un ratito en el arranque.
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python3_provider = 0
+-- Si en algún momento instalás algo que sí necesite Python remoto (raro hoy en día),
+-- sacás esa línea y agregás pynvim con nix/pip.

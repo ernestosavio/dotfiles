@@ -21,6 +21,9 @@ require("ernesto.pack.code-actions")
 require("ernesto.pack.blink")
 require("ernesto.pack.typst-preview")
 
+-- Clean
+require("ernesto.pack.clean")
+
 -- Colors
 require("ernesto.pack.colors")
 
