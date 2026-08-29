@@ -45,10 +45,28 @@ vim.lsp.config("lua_ls", {
   },
 })
 
+vim.lsp.config("hls", {
+  -- Use the global wrapper provided by GHCup
+  cmd = { "haskell-language-server-wrapper", "--lsp" },
+  filetypes = { "haskell", "lhaskell", "cabal" },
+
+  -- Opcional pero recomendado: Pasarle las capabilities de blink.cmp
+  -- para que HLS sepa que soporto autocompletado avanzado
+  capabilities = require('blink.cmp').get_lsp_capabilities(),
+
+  settings = {
+    haskell = {
+      cabalFormattingProvider = "cabalfmt",
+      formattingProvider = "ormolu",
+    }
+  }
+})
+vim.lsp.enable("hls")
+
 require("mason-lspconfig").setup({
   ensure_installed = {
     "lua_ls", "vimls", "clangd", "pyright", "rust_analyzer",
-    "ts_ls", "tinymist", --"hls",
+    "ts_ls", "tinymist",
   },
   -- automatic_enable = true (default): no hace falta llamar
   -- vim.lsp.enable() a mano, mason-lspconfig lo hace por cada

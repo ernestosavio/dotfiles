@@ -14,11 +14,12 @@ require("ernesto.pack.undotree")
 require("ernesto.pack.harpoon")
 require("ernesto.pack.treesitter")
 require("ernesto.pack.telescope")
+require("ernesto.pack.blink") -- LO movi aca, ver si anda todo bien
 require("ernesto.pack.lsp")
 
 require("ernesto.pack.code-actions")
 
-require("ernesto.pack.blink")
+-- require("ernesto.pack.blink")
 require("ernesto.pack.typst-preview")
 
 -- Clean

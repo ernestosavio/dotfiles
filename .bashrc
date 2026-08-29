@@ -76,6 +76,7 @@ parse_git_status() {
 # \$           -> Muestra $ para usuario normal, # para root
 export PS1='\[\033[36m\]\w\[\033[00m\]\n$(parse_git_status) 𝛌 '
                                          
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
 
+export PATH="$HOME/.ghcup/bin:$PATH"
 export PATH="$PATH:/home/ernesto/.risc0/bin"

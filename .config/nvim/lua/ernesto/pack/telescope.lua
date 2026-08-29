@@ -34,7 +34,7 @@ telescope.setup({
   defaults = {
     -- Muestra la ruta del archivo cuando hay nombres repetidos entre
     -- carpetas distintas, y la oculta cuando no hace falta.
-    path_display = { "smart" },
+    --path_display = { "smart" },
   },
 })
 
