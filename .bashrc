@@ -80,3 +80,8 @@ export PS1='\[\033[36m\]\w\[\033[00m\]\n$(parse_git_status) 𝛌 '
 
 export PATH="$HOME/.ghcup/bin:$PATH"
 export PATH="$PATH:/home/ernesto/.risc0/bin"
+
+# No se si esto es 100% necesario para que funcione nemo
+nemo() {
+  env -u GI_TYPELIB_PATH -u GDK_PIXBUF_MODULE_FILE -u GST_PLUGIN_SYSTEM_PATH_1_0 -u GIO_EXTRA_MODULES /usr/bin/nemo "$@"
+}

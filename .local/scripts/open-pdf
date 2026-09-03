@@ -4,12 +4,22 @@ DIRS=(
     "$HOME/Downloads"
     "$HOME/Desktop"
     "$HOME/personal"
-    "$HOME/personal/notes"
-    "$HOME/personal/projects"
     "$(tmux run "echo #{pane_start_path}")"
 )
 
-selected=$(find -L "${DIRS[@]}" -mindepth 1 -path "$HOME/Desktop/Facu\ \(Local\)" -prune -o -name "*.pdf" | sed "s|^$HOME/||" | fzf)
+# Agrupamos todos los directorios a ignorar dentro de \( ... \) antes de aplicar -prune
+selected=$(find -L "${DIRS[@]}" -mindepth 1 \
+    \( -path "$HOME/Desktop/Facu (Local)" \
+       -o -name ".nix-profile" \
+       -o -name ".cache" \
+       -o -name ".git" \
+       -o -name "node_modules" \
+       -o -name ".local" \
+       -o -name ".npm" \
+       -o -name ".stack" \
+       -o -name "$HOME/Desktop/backup" \
+    \) -prune \
+    -o -name "*.pdf" -print | sed "s|^$HOME/||" | sort -u | fzf)
 
 if [[ -n "$selected" ]]; then
   selected="$HOME/$selected"
@@ -21,10 +31,6 @@ fi
 
 selected_name=$(basename "$selected" | tr ".,: " "____")
 
-# nohup zathura "$selected" >/dev/null 2>&1 &
-# setsid zathura "$selected" >/dev/null 2>&1 &
-#tmux new-window -dn pdf "zathura \"$selected\""
-#tmux new-window -dn pdf "sioyek \"$selected\""
 swaymsg exec "sioyek \"$selected\"" > /dev/null 2>&1
 
 exit 0
