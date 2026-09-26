@@ -88,6 +88,17 @@
   alt_x (tap-hold-release 160 160 x lalt)
   alt_, (tap-hold-release 200 200 , ralt)
   nav   (tap-hold-release 120 120 spc (layer-toggle navnum))
+
+  ;; --- ACENTOS ---
+  ;; --- Gatillo para los acentos ---
+  dead-ac (one-shot 1500 (layer-toggle acentos))
+  ;; --- Letras acentuadas enviando Alt Derecho (AltGr) virtual ---
+  á RA-a
+  é RA-e
+  í RA-i
+  ó RA-o
+  ú RA-u
+  ñ RA-n
 )
 
 ;; CAPA BASE
@@ -137,8 +148,17 @@
 ;; )
 (deflayer symbols
   _     A-1    A-2  A-3  A-4  A-5   A-6   A-7   A-8    A-9    A-0   _    _    _
-  _     S-2    S-3  -    S-=  S-5   _     S-7   S-8    S-4    S-6   S-1  _    _
+  _     S-2    S-3  -    S-=  S-5   _     S-7   S-8    S-4    S-6   @dead-ac  _    _
   _     S-'    [    S-9  =    S-[   S-]   S--   S-0    ]      '     _    _
   _     S-\    _    S-,  grv  _     S-grv S-.   S-1    _      \     _    
   _     _      _                   _                   _      _     _
+)
+
+;; CAPA ACENTOS
+(deflayer acentos
+  _    _  _  _  _  _  _  _  _  _  _  _  _  _
+  _    _  _  @é _  _  _  @ú @í @ó _  _  _  _
+  _    @á _  _  _  _  _  _  _  _  _  _  _
+  _    _  _  _  _  _  @ñ _  _  _  _  _
+  _    _  _        _        _  _  _
 )
